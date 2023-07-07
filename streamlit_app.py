@@ -12,7 +12,7 @@ def rectify_grammar(openai_api_key, original_text):
     openai.api_key = openai_api_key
     response = openai.Completion.create(
         model='text-davinci-003',
-        prompt=f'Rectify the grammar and typos in the email delimited by triple backticks ```{original_text}```',
+        prompt=f'Rephrase, rectify the Grammar and Typos in the message delimited by triple backticks ```{original_text}```',
         max_tokens=1000,
         temperature=0,
         stream=False,
@@ -60,7 +60,7 @@ def main():
         
         with st.spinner("Rectifying original text"):
             response = rectify_grammar(openai_api_key, original_text)
-            st.text_area("Corrected text with grammar and typo mistakes", value=response, height=height, disabled=True, key="ct")
+            st.text_area("Corrected text with grammar and typo mistakes", value=response.replace("```", ""), height=height, disabled=True, key="ct")
 
 
 if __name__ == "__main__":
