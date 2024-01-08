@@ -12,7 +12,7 @@ def is_key_loaded(openai_api_key):
 def rectify_grammar(openai_api_key, original_text):
     openai.api_key = openai_api_key
     response = openai.Completion.create(
-        model='text-davinci-003',
+        model='gpt-3.5-turbo',
         prompt=f'Rephrase, rectify the Grammar and Typos in the message delimited by triple backticks ```{original_text}```',
         max_tokens=1000,
         temperature=0,
